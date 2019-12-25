@@ -1,4 +1,4 @@
-class TodolistsController < ApplicationController
+class BooksController < ApplicationController
 
   def new
   	@book = Book.new
@@ -8,10 +8,10 @@ class TodolistsController < ApplicationController
   	book = Book.new(list_params)
     if book.save
       flash[:notice] = "Book was successfully created."
-  	redirect_to todolist_path(book.id)
+  	redirect_to book_path(book.id)
   else
-    book = Book.new
     @books = Book.all
+    flash[:error] = "can't be blank"
      render action: :index
 
   end
@@ -33,7 +33,7 @@ class TodolistsController < ApplicationController
   def update
 	book = Book.find(params[:id])
 	if book.update(list_params)
-	redirect_to todolist_path(book.id), notice: "Book was successfully updated."
+	redirect_to book_path(book.id), notice: "Book was successfully updated."
 else
   render action:edit
   end
@@ -42,7 +42,7 @@ else
   def destroy
   book = Book.find(params[:id])
 	book.destroy
-	redirect_to todolists_path , notice: "Book was successfully destroyed."
+	redirect_to books_path , notice: "Book was successfully destroyed."
   end
 private
 
@@ -53,3 +53,4 @@ end
 
 
 end
+

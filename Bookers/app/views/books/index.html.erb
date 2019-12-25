@@ -21,9 +21,9 @@
       <td><span><%= book.body %></span></td>
 
       <td>
-<%= link_to "show", todolist_path(book.id) %>
-<%= link_to "edit", edit_todolist_path(book.id) %>
-<%= link_to "destroy", destroy_todolist_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
+<%= link_to "show", book_path(book.id) %>
+<%= link_to "edit", edit_book_path(book.id) %>
+<%= link_to "destroy", book_path(book.id), method: :delete, "data-confirm" => "Are you sure?" %>
 </td>
 
     </tr>
@@ -36,7 +36,7 @@
 
 <%  @book = Book.new %>
 <!-- form_for部分 -->
-<%= form_for(@book, url: '/todolists') do |f| %>
+<%= form_for(@book, url: '/books') do |f| %>
 
 <% if flash[:error] %>
   <p><%= flash[:error] %></p>
@@ -52,6 +52,7 @@
 
 
 <% end %>
+
 
 
 
